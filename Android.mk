@@ -24,7 +24,7 @@ ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 \
     adsp.b06 adsp.b07 adsp.b08 adsp.b09 adsp.b10 adsp.b11 \
     adsp.b12 adsp.b13 adsp.b14 adsp.b15 adsp.mbn adsp.mdt
-	
+
 ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(ADSP_IMAGES)))
 $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
@@ -122,30 +122,6 @@ $(FIRMWARE_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_MODEM_SYMLINKS)
 
-PROV_IMAGES := \
-    prov.b00 prov.b01 prov.b02 prov.b03 prov.mdt
-
-PROV_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PROV_IMAGES)))
-$(PROV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Playready firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(PROV_SYMLINKS)
-
-QDSP_IMAGES := \
-    qdsp6m.qdb
-
-QDSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(QDSP_IMAGES)))
-$(QDSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Playready firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(QDSP_SYMLINKS)
-
 FIRMWARE_WCNSS_IMAGES := \
     wcnss.b00 wcnss.b01 wcnss.b02 wcnss.b04 \
     wcnss.b06 wcnss.b09 wcnss.b10 wcnss.b11 \
@@ -182,15 +158,60 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
+PROV_IMAGES := \
+    prov.b00 prov.b01 prov.b02 prov.b03 prov.mdt
+
+PROV_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PROV_IMAGES)))
+$(PROV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Playready firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(PROV_SYMLINKS)
+
+QDSP_IMAGES := \
+    qdsp6m.qdb
+
+QDSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(QDSP_IMAGES)))
+$(QDSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Playready firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(QDSP_SYMLINKS)
+
+RFS_MSM_ADSP_SYMLINKS := $(TARGET_OUT)/rfs/msm/adsp/
+$(RFS_MSM_ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MSM ADSP folder structure: $@"
+	@rm -rf $@/*
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/tombstones/lpass $@/ramdumps
+	$(hide) ln -sf /persist/rfs/msm/adsp $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+
+RFS_MSM_MPSS_SYMLINKS := $(TARGET_OUT)/rfs/msm/mpss/
+$(RFS_MSM_MPSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating RFS MSM MPSS folder structure: $@"
+	@rm -rf $@/*
+	@mkdir -p $(dir $@)/readonly
+	$(hide) ln -sf /data/tombstones/modem $@/ramdumps
+	$(hide) ln -sf /persist/rfs/msm/mpss $@/readwrite
+	$(hide) ln -sf /persist/rfs/shared $@/shared
+	$(hide) ln -sf /persist/hlos_rfs/shared $@/hlos
+	$(hide) ln -sf /firmware $@/readonly/firmware
+
+ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS)
+
 WCNSS_CFG_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 $(WCNSS_CFG_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@mkdir -p $(dir $@)
 	$(hide) ln -sf /data/vendor/wifi/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_CFG_SYMLINK)
-
-include device/motorola/athene/tftp.mk
-include device/motorola/athene/expat.mk
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
