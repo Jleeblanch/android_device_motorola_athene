@@ -258,6 +258,7 @@ PRODUCT_PACKAGES += \
     WCNSS_wlan_dictionary.dat
 
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
@@ -267,4 +268,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-    
