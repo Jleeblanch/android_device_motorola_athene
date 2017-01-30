@@ -113,6 +113,10 @@ PRODUCT_PACKAGES += \
     libbson \
     Snap
 
+# Disable camera Treble path
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera.disable_treble=true
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
