@@ -68,7 +68,6 @@ bin/dun-server
 bin/ftmdaemon
 bin/ftmipcd
 bin/hci_qcomm_init
-vendor/lib/libbt-vendor.so
 vendor/lib/libbtnv.so
 
 # Bluetooth - Firmware
