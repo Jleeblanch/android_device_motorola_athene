@@ -270,6 +270,7 @@ PRODUCT_COPY_FILES += \
 
 # Shims
 PRODUCT_PACKAGES += \
+    libshim_ril \
     libshims_get_process_name \
     rild_socket
 
