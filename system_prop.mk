@@ -69,6 +69,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.enable.sglscale=1 \
+    debug.sf.enable_hwc_vds=1 \
     debug.sf.hw=1 \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196610 \
