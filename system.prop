@@ -72,6 +72,7 @@ persist.data.mode=concurrent
 persist.data.iwlan.enable=true
 
 # Time
+persist.delta_time.enable=true
 persist.timed.enable=true
 
 # CABL
