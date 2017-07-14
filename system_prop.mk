@@ -135,6 +135,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.disableIMSLogs=0 \
     persist.vendor.ims.vt.enableadb=1 \
     persist.vendor.qcril_uim_vcc_feature=1 \
+    persist.vendor.qti.telephony.vt_cam_interface=1 \
     persist.vendor.radio.0x9e_not_callname=1 \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
     persist.vendor.radio.cs_srv_type=1 \
