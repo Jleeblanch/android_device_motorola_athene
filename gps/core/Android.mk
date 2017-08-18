@@ -16,6 +16,7 @@ LOCAL_CFLAGS += -DPDK_FEATURE_SET
 endif
 
 LOCAL_SHARED_LIBRARIES := \
+    libandroid_runtime \
     libutils \
     libcutils \
     libgps.utils \
