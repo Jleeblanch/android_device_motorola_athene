@@ -196,9 +196,6 @@ TARGET_USE_SDCLANG := true
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
-# Sensors
-USE_SENSOR_MULTI_HAL := true
-
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /system/lib/libandroid.so|libshim_ril.so \
