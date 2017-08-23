@@ -6,3 +6,6 @@ type hw_block_device, dev_type;
 type laser_device, dev_type;
 type logs_block_device, dev_type;
 type utags_block_device, dev_type;
+
+# USB Keyboard/Mouse
+type hid_gadget_device, dev_type;
