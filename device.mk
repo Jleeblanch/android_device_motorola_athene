@@ -90,10 +90,6 @@ PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
 
-# For android_filesystem_config.h
-PRODUCT_PACKAGES += \
-    fs_config_files
-
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
