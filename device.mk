@@ -66,6 +66,8 @@ PRODUCT_AAPT_CONFIG := normal
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio.r_submix.default \
@@ -118,6 +120,10 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.memtrack@1.0-impl \
     gralloc.msm8952 \
     copybit.msm8952 \
     hwcomposer.msm8952 \
@@ -140,6 +146,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
     gps.msm8952 \
     libgnsspps
 
@@ -161,6 +168,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl \
     lights.msm8952
 
 # LiveDisplay native
@@ -209,6 +217,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.msm8952
 
 # Ramdisk
@@ -246,6 +255,10 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-athene.conf:system/etc/thermal-engine-athene.conf
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
 
 # Wifi
 PRODUCT_PACKAGES += \
