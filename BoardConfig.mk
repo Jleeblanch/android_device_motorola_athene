@@ -153,10 +153,6 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
-# RIL
-BOARD_PROVIDES_RILD := true
-BOARD_PROVIDES_LIBRIL := true
-
 # SDClang
 TARGET_USE_SDCLANG := true
 
