@@ -28,7 +28,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := sensor.cpp
-LOCAL_SHARED_LIBRARIES := libgui
+LOCAL_SHARED_LIBRARIES := libsensor
 LOCAL_MODULE := libshim_ril
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
