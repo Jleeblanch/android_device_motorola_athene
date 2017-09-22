@@ -133,10 +133,6 @@ on boot
     chown camera camera /sys/devices/w1_bus_master1/w1_master_search
     chmod 0664 /sys/devices/w1_bus_master1/w1_master_search
 
-    # Change the ownership of the charging LED interface
-    chown system system /sys/class/leds/charging/brightness
-    chmod 0664 /sys/class/leds/charging/brightness
-
     # Change permission for backlight
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 

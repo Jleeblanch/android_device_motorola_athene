@@ -1,0 +1,13 @@
+on init
+    # Change the ownership of the charging LED interface
+    chown system system /sys/class/leds/charging/brightness
+    chmod 0664 /sys/class/leds/charging/brightness
+
+    # Change the ownership of the notification LED interface
+    chown system system /sys/class/leds/charging/blink
+    chmod 0664 /sys/class/leds/charging/blink
+
+service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.athene
+    class hal
+    user system
+    group system
