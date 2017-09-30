@@ -231,6 +231,10 @@ PRODUCT_COPY_FILES += \
 # OEM
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vhw.xml:system/etc/vhw.xml
+# Net
+PRODUCT_PACKAGES += \
+    android.system.net.netd@1.0 \
+    netutils-wrapper-1.0
 
 # OMX
 PRODUCT_PACKAGES += \
