@@ -57,12 +57,6 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
-# CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/cmhw \
-    hardware/cyanogen/cmhw
-
 # CNE
 BOARD_USES_QCNE := true
 TARGET_LDPRELOAD := libNimsWrap.so
@@ -125,6 +119,10 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += \
+    $(DEVICE_PATH)/lineagehw
 
 # Malloc
 MALLOC_SVELTE := true
