@@ -14,7 +14,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/device_settings_app_name"
-        android:persistent="true">
+        android:persistent="true"
+        android:theme="@style/CMActions">
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
             <intent-filter>
@@ -31,8 +32,7 @@
 
         <activity
             android:name=".DozePreferenceActivity"
-            android:label="@string/ambient_display_title"
-            android:theme="@style/CMActions">
+            android:label="@string/ambient_display_title">
             <intent-filter>
                 <action android:name="org.cyanogenmod.settings.device.DOZE_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -41,8 +41,7 @@
 
         <activity
             android:name=".TouchscreenGesturePreferenceActivity"
-            android:label="@string/moto_actions_panel_title"
-            android:theme="@style/CMActions">
+            android:label="@string/moto_actions_panel_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
