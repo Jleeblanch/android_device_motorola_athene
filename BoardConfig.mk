@@ -105,6 +105,16 @@ TARGET_USES_NEW_ION_API := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 USE_OPENGL_RENDERER := true
 
+# Enable dexpreopt to speed boot time
+ifeq ($(HOST_OS),linux)
+    ifneq ($(TARGET_BUILD_VARIANT),eng)
+        ifeq ($(WITH_DEXPREOPT),)
+            WITH_DEXPREOPT := true
+            WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+        endif
+    endif
+endif
+
 # FM
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
