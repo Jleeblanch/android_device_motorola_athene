@@ -2,6 +2,7 @@ allow kernel audioserver:process setsched;
 allow kernel bluetooth:process setsched;
 allow kernel cnd:process setsched;
 allow kernel dataservice_app:process setsched;
+allow kernel debugfs_wlan:dir search;
 allow kernel debuggerd:process setsched;
 allow kernel fingerprintd:process setsched;
 allow kernel gatekeeperd:process setsched;
