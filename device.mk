@@ -172,6 +172,10 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     ueventd.qcom.rc
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     ipacm \
