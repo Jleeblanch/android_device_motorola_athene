@@ -297,6 +297,13 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
     android.hardware.power@1.0-service
 
+# RCS
+PRODUCT_PACKAGES += \
+    rcs_service_aidl \
+    rcs_service_aidl.xml \
+    rcs_service_api \
+    rcs_service_api.xml
+
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
@@ -324,6 +331,13 @@ PRODUCT_COPY_FILES += \
 # Stlport
 PRODUCT_PACKAGES += \
     libstlport
+
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # Thermal
 PRODUCT_COPY_FILES += \
