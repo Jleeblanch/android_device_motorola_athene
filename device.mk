@@ -96,6 +96,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm8952 \
     copybit.msm8952 \
     hwcomposer.msm8952 \
+    libqdMetaData.system \
     memtrack.msm8952
 
 PRODUCT_PACKAGES += \
