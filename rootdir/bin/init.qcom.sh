@@ -123,34 +123,6 @@ start_msm_irqbalance()
 	fi
 }
 
-start_copying_prebuilt_qcril_db()
-{
-    if [ -f /vendor/radio/qcril_database/qcril.db -a ! -f /data/vendor/radio/qcril.db ]; then
-        # [MOTO] - First copy db from the old N path to O path for upgrade
-        if [ -f /data/misc/radio/qcril.db ]; then
-            cp /data/misc/radio/qcril.db /data/vendor/radio/qcril.db
-            # copy the backup db from the old N path to O path for upgrade
-            if [ -f /data/misc/radio/qcril_backup.db ]; then
-                cp /data/misc/radio/qcril_backup.db /data/vendor/radio/qcril_backup.db
-            fi
-            # Now delete the old folder
-            rm -fr /data/misc/radio
-        else
-            cp /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril.db
-        fi
-        chown -h radio.radio /data/vendor/radio/qcril.db
-    else
-        # [MOTO] if qcril.db's owner is not radio (e.g. root),
-        # reset it for the recovery
-        qcril_db_owner=`stat -c %U /data/misc/radio/qcril.db`
-        echo "qcril.db's owner is $qcril_db_owner"
-        if [ $qcril_db_owner != "radio" ]; then
-            echo "reset owner to radio for qcril.db"
-            chown -h radio.radio /data/misc/radio/qcril.db
-        fi
-    fi
-}
-
 baseband=`getprop ro.baseband`
 echo 1 > /proc/sys/net/ipv6/conf/default/accept_ra_defrtr
 
@@ -448,12 +420,6 @@ case "$target" in
        esac
         ;;
 esac
-
-#
-# Copy qcril.db if needed for RIL
-#
-start_copying_prebuilt_qcril_db
-echo 1 > /data/vendor/radio/db_check_done
 
 #
 # Make modem config folder and copy firmware config to that folder for RIL
