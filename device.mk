@@ -77,6 +77,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera.disable_treble=true
 
+# Disable Vulkan
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.graphics.vulkan.disable=true
+
 # Motorola Camera permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/com.motorola.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camera.xml \
