@@ -196,6 +196,10 @@ TARGET_USE_SDCLANG := true
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /vendor/lib/libmdmcutback.so|libqsap_shim.so
+
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 
