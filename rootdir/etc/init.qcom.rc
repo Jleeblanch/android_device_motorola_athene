@@ -45,7 +45,7 @@ on early-init
     mkdir /customize 0500 root root
 
 on init
-    export LD_SHIM_LIBS /system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so:/system/vendor/lib/libizat_core.so|libshims_get_process_name.so:/system/lib/libandroid.so|libshim_ril.so
+    export LD_SHIM_LIBS /system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so:/system/vendor/lib/libizat_core.so|libshims_get_process_name.so:/system/lib/libandroid.so|libshim_ril.so:/system/vendor/lib/libmdmcutback.so|libqsap_shim.so
 
     start qfintverify
 
