@@ -191,6 +191,13 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /system/lib/libandroid.so|libshim_ril.so \
+    /system/vendor/lib/libmdmcutback.so|libqsap_shim.so \
+    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so
+
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
 
