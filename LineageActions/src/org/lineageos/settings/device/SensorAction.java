@@ -17,6 +17,6 @@
 
 package org.lineageos.settings.device;
 
-public interface SensorAction {
+interface SensorAction {
     public void action();
 }

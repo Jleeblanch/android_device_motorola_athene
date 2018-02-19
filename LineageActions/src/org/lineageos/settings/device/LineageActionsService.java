@@ -27,20 +27,6 @@ import android.util.Log;
 import java.util.List;
 import java.util.LinkedList;
 
-import org.lineageos.settings.device.actions.UpdatedStateNotifier;
-import org.lineageos.settings.device.actions.CameraActivationSensor;
-import org.lineageos.settings.device.actions.ChopChopSensor;
-import org.lineageos.settings.device.actions.FlipToMute;
-import org.lineageos.settings.device.actions.LiftToSilence;
-import org.lineageos.settings.device.actions.ProximitySilencer;
-
-import org.lineageos.settings.device.doze.DozePulseAction;
-import org.lineageos.settings.device.doze.GlanceSensor;
-import org.lineageos.settings.device.doze.ProximitySensor;
-import org.lineageos.settings.device.doze.ScreenReceiver;
-import org.lineageos.settings.device.doze.ScreenStateNotifier;
-import org.lineageos.settings.device.doze.StowSensor;
-
 public class LineageActionsService extends IntentService implements ScreenStateNotifier,
         UpdatedStateNotifier {
     private static final String TAG = "LineageActions";
@@ -58,7 +44,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
                         new LinkedList<UpdatedStateNotifier>();
 
     public LineageActionsService(Context context) {
-        super("LineageActionService");
+        super("LineageActionsService");
         mContext = context;
 
         Log.d(TAG, "Starting");
@@ -77,12 +63,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
 
         // Other actions that are always enabled
         mUpdatedStateNotifiers.add(new CameraActivationSensor(lineageActionsSettings, mSensorHelper));
-        if (!Device.isSurnia()){
-            mUpdatedStateNotifiers.add(new ChopChopSensor(lineageActionsSettings, mSensorHelper));
-        } else {
-            Log.d(TAG, "No ChopChop");
-        }
-
+        mUpdatedStateNotifiers.add(new ChopChopSensor(lineageActionsSettings, mSensorHelper));
         mUpdatedStateNotifiers.add(new ProximitySilencer(lineageActionsSettings, context, mSensorHelper));
         mUpdatedStateNotifiers.add(new FlipToMute(lineageActionsSettings, context, mSensorHelper));
         mUpdatedStateNotifiers.add(new LiftToSilence(lineageActionsSettings, context, mSensorHelper));

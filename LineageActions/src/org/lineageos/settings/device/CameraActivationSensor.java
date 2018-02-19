@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package org.lineageos.settings.device;
 
 import java.util.List;
 
@@ -24,9 +24,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-
-import org.lineageos.settings.device.LineageActionsSettings;
-import org.lineageos.settings.device.SensorHelper;
 
 public class CameraActivationSensor implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "LineageActions-CameraSensor";

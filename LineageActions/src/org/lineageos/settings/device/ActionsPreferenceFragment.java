@@ -34,8 +34,8 @@ import android.text.TextUtils;
 
 import java.io.File;
 
-import org.lineageos.settings.device.utils.FileUtils;
-import org.lineageos.settings.device.actions.Constants;
+import org.lineageos.settings.device.FileUtils;
+import org.lineageos.internal.util.ScreenType;
 
 public class ActionsPreferenceFragment extends PreferenceFragment {
     private SwitchPreference mFlipPref;

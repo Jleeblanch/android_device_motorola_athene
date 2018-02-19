@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package org.lineageos.settings.device;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -25,9 +25,6 @@ import android.telephony.PhoneStateListener;
 import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-
-import org.lineageos.settings.device.LineageActionsSettings;
-import org.lineageos.settings.device.SensorHelper;
 
 public class LiftToSilence extends PhoneStateListener implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "LineageActions-LiftToSilence";

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.doze;
+package org.lineageos.settings.device;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -23,10 +23,6 @@ import android.hardware.SensorEventListener;
 import android.util.Log;
 
 import java.lang.System;
-
-import org.lineageos.settings.device.LineageActionsSettings;
-import org.lineageos.settings.device.SensorAction;
-import org.lineageos.settings.device.SensorHelper;
 
 public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     private static final String TAG = "LineageActions-StowSensor";

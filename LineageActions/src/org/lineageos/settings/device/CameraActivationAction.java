@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package org.lineageos.settings.device;
 
 import java.util.List;
 
@@ -31,8 +31,6 @@ import android.os.PowerManager.WakeLock;
 import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
-
-import org.lineageos.settings.device.SensorAction;
 
 public class CameraActivationAction implements SensorAction {
     private static final String TAG = "LineageActions";

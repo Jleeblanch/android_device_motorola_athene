@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package org.lineageos.settings.device;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.lineageos.settings.device.utils.FileUtils;
+import org.lineageos.settings.device.FileUtils;
 
 public class Constants {
 

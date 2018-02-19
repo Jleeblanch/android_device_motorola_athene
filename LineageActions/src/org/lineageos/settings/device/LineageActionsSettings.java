@@ -25,10 +25,6 @@ import android.provider.Settings;
 
 import android.util.Log;
 
-import org.lineageos.settings.device.actions.UpdatedStateNotifier;
-import org.lineageos.settings.device.actions.CameraActivationAction;
-import org.lineageos.settings.device.actions.TorchAction;
-
 public class LineageActionsSettings {
     private static final String TAG = "LineageActions";
 
@@ -97,7 +93,6 @@ public class LineageActionsSettings {
 
     public void cameraAction() {
         new CameraActivationAction(mContext).action();
-
     }
 
     public void chopChopAction() {
@@ -109,7 +104,7 @@ public class LineageActionsSettings {
         mChopChopEnabled = sharedPreferences.getBoolean(GESTURE_CHOP_CHOP_KEY, true);
         mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
         mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
-        mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, true);
+        mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
         mFlipToMuteEnabled = sharedPreferences.getBoolean(GESTURE_FLIP_TO_MUTE_KEY, false);
         mLiftToSilenceEnabled = sharedPreferences.getBoolean(GESTURE_LIFT_TO_SILENCE_KEY, false);
     }

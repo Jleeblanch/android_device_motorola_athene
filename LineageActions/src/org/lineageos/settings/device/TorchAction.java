@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device.actions;
+package org.lineageos.settings.device;
 
 import android.content.Context;
 import android.hardware.camera2.CameraManager;
@@ -23,8 +23,6 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraAccessException;
 import android.os.Vibrator;
 import android.util.Log;
-
-import org.lineageos.settings.device.SensorAction;
 
 public class TorchAction implements SensorAction {
     private static final String TAG = "LineageActions";
