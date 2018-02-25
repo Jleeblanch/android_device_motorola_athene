@@ -51,13 +51,11 @@
 /dev/rmnet_ctrl           0660   usb        usb
 /dev/dpl_ctrl             0660   usb        usb
 
-/dev/block/bootdevice/by-name/frp 0600 system system
-
 # Block devices
-/dev/block/bootdevice/by-name/clogo        0660 root oem_5004
-/dev/block/bootdevice/by-name/cid          0660 root oem_5004
-/dev/block/bootdevice/by-name/utags        0660 oem_5004 system
-/dev/block/bootdevice/by-name/utagsBackup  0660 oem_5004 system
+/dev/block/platform/soc.0/7824900.sdhci/by-name/clogo          0660   root       oem_5004
+/dev/block/platform/soc.0/7824900.sdhci/by-name/cid            0660   root       oem_5004
+/dev/block/platform/soc.0/7824900.sdhci/by-name/utags          0660   oem_5004   system
+/dev/block/platform/soc.0/7824900.sdhci/by-name/utagsBackup    0660   oem_5004   system
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
@@ -265,7 +263,7 @@
 
 # Add device block for FRP
 /dev/block/platform/soc.0/7824900.sdhci/by-name/config    0660   system     system
-/dev/block/bootdevice/by-name/frp 0600 system system
+/dev/block/platform/soc.0/7824900.sdhci/by-name/frp       0600   system     system
 
 # Moto Sensors
 /dev/stml0xx               0660  system     compass
