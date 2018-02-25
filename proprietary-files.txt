@@ -15,7 +15,7 @@ vendor/lib/libactuator_mot_lc898212xd.so
 vendor/lib/libactuator_rohm_bu64243gwz.so
 
 # Audio
-bin/audiod
+bin/audiod:vendor/bin/audiod
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/General_cal.acdb
 etc/acdbdata/Global_cal.acdb
@@ -42,7 +42,7 @@ vendor/lib/libaudioparsers.so
 vendor/lib/libsurround_3mic_proc.so
 
 # ADSP
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libfastcvadsp_stub.so
@@ -62,8 +62,8 @@ vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/rfsa/adsp/libscveTextReco_skel.so
 
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
@@ -86,7 +86,7 @@ vendor/lib64/libaptXHD_encoder.so
 vendor/lib64/libaptX_encoder.so
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8952.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
@@ -648,14 +648,13 @@ vendor/lib64/libsdm-disp-vndapis.so
 vendor/lib64/libsdmcore.so
 vendor/lib64/libsdmextension.so
 vendor/lib64/libsdmutils.so
-vendor/lib64/
 
 # DPM
 framework/com.qti.dpmframework.jar
 framework/dpmapi.jar
 
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/bin/qseeproxydaemon
 vendor/bin/qseeproxysampledaemon
 vendor/lib/libdrmdecrypt.so
@@ -684,7 +683,7 @@ vendor/lib/libFidoCryptov1.so
 vendor/lib/liboemcrypto.so
 
 # Fingerprint
-bin/fingerprintd
+bin/fingerprintd:vendor/bin/fingerprintd
 lib/libcom_fingerprints_service.so
 lib/hw/fingerprint.msm8952.so:vendor/lib/hw/fingeprint.vendor.msm8952.so
 
@@ -706,7 +705,7 @@ framework/tcmclient.jar
 framework/tcmiface.jar
 
 # Gatekeeper
-bin/gatekeeperd
+bin/gatekeeperd:vendor/bin/gatekeeperd
 vendor/lib/hw/gatekeeper.msm8952.so
 
 # Graphics
@@ -785,7 +784,7 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscalar.so
 
 # GPS
-bin/gpsone_daemon
+bin/gpsone_daemon:vendor/bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.vzw_library.xml
 etc/permissions/com.qualcomm.location.xml
 framework/com.qti.location.sdk.jar
@@ -867,10 +866,10 @@ etc/firmware/a530_pm4.fw
 
 # IMS
 -framework/imscmlibrary.jar
-bin/imscmservice
-bin/imsdatadaemon
-bin/imsqmidaemon
-bin/ims_rtp_daemon
+bin/imscmservice:vendor/bin/imscmservice
+bin/imsdatadaemon:vendor/bin/imsdatadaemon
+bin/imsqmidaemon:vendor/bin/imsqmidaemon
+bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
 etc/permissions/com.motorola.msimsettings.xml
 etc/permissions/ims.xml
 etc/permissions/imscm.xml
@@ -1017,20 +1016,20 @@ vendor/lib64/libmdmdetect.so
 vendor/lib64/libsmemlog.so
 
 # Moto
-bin/batt_health
-bin/charge_only_mode
-bin/cnd
-bin/dbvc_atvc_property_set
-bin/dun-server
-bin/ftmdaemon
-bin/ftmipcd
+bin/batt_health:vendor/bin/batt_health
+bin/charge_only_mode:vendor/bin/charge_only_mode
+bin/cnd:vendor/bin/cnd
+bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
+bin/dun-server:vendor/bin/dun-server
+bin/ftmdaemon:vendor/bin/ftmdaemon
+bin/ftmipcd:vendor/bin/ftmipcd
 bin/hardware_revisions.sh
-bin/irsc_util
-bin/motobox
-bin/motosh
-bin/tcmd
-bin/tcmdhelp
-bin/tftp_server
+bin/irsc_util:vendor/bin/irsc_util
+bin/motobox:vendor/bin/motobox
+bin/motosh:vendor/bin/motosh
+bin/tcmd:vendor/bin/tcmd
+bin/tcmdhelp:vendor/bin/tcmdhelp
+bin/tftp_server:vendor/bin/tftp_server
 etc/permissions/com.motorola.frameworks.core.addon.xml
 framework/com.motorola.motosignature.jar
 lib/libmotaudioutils.so
@@ -1042,7 +1041,7 @@ lib/libmot_lux_standardization.so
 vendor/lib/libmotocalibration.so
 
 # Network
-bin/port-bridge
+bin/port-bridge:vendor/bin/port-bridge
 etc/permissions/izat.xt.srv.xml
 etc/permissions/qti_permissions.xml
 framework/ConnectivityExt.jar
@@ -1075,11 +1074,11 @@ vendor/lib64/libqtigef.so
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-bin/netmgrd
-bin/qmi_motext_hook
-bin/qmuxd
-bin/radish
-bin/rmt_storage
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmi_motext_hook:vendor/bin/qmi_motext_hook
+bin/qmuxd:vendor/bin/qmuxd
+bin/radish:vendor/bin/radish
+bin/rmt_storage:vendor/bin/rmt_storage
 etc/data/qmi_config.xml
 etc/motorola/ecc_db/qcril_mot_ecc_common.db
 etc/permissions/qcnvitems.xml
@@ -1117,14 +1116,14 @@ vendor/lib64/libqmiservices.so
 vendor/qcril.db
 
 # Wifi
-bin/cnss-daemon
+bin/cnss-daemon:vendor/bin/cnss-daemon
 lib/libwifi-hal-qcom.so
 vendor/lib/libxtwifi_ulp_adaptor.so
 
 # Peripheral Manager
-bin/hal_proxy_daemon
-bin/pm-proxy
-bin/pm-service
+bin/hal_proxy_daemon:vendor/bin/hal_proxy_daemon
+bin/pm-proxy:vendor/bin/pm-proxy
+bin/pm-service:vendor/bin/pm-service
 lib64/libperipheral_client.so
 vendor/lib/libperipheral_client.so
 
@@ -1132,7 +1131,7 @@ vendor/lib/libperipheral_client.so
 etc/permissions/com.qti.snapdragon.sdk.display.xml
 
 # Qualcomm framework
-bin/ATFWD-daemon
+bin/ATFWD-daemon:vendor/bin/ATFWD-daemon
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
@@ -1185,8 +1184,8 @@ vendor/lib/libSecureUILib.so
 vendor/lib/libsecureui_svcsock.so
 
 # Sensors
-bin/sensors.qcom
-bin/sensorservice
+bin/sensors.qcom:vendor/bin/sensors.qcom
+bin/sensorservice:vendor/bin/sensorservice
 lib/hw/sensors.msm8952.so
 lib/libmot_sensorlistener.so
 vendor/lib/libsensor1.so
@@ -1210,7 +1209,7 @@ vendor/lib/libthermalioctl.so
 # Time
 -app/TimeService/TimeService.apk
 -vendor/lib/libtime_genoff.so
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 vendor/lib64/libTimeService.so
 vendor/lib64/libtime_genoff.so
