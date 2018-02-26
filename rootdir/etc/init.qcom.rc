@@ -687,22 +687,17 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     user bluetooth
     group bluetooth diag oem_2950
     disabled
- 
-service config_bluetooth /vendor/etc/init.qcom.bt.sh "onboot"
-    class core
-    user bluetooth
-    group bluetooth system
-    oneshot
 
-service hciattach /vendor/etc/init.qcom.bt.sh
+service hciattach /vendor/bin/hci_qcomm_init -e
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin
+    group bluetooth net_bt_admin oem_2950 diag radio
     disabled
     oneshot
 
 on property:bluetooth.hciattach=true
     start hciattach
+    setprop bluetooth.status on
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
