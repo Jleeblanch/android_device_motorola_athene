@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.mmi.usb.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.mmi.usb.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -688,13 +688,13 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     group bluetooth diag oem_2950
     disabled
  
-service config_bluetooth /system/bin/sh /init.qcom.bt.sh "onboot"
+service config_bluetooth /vendor/etc/init.qcom.bt.sh "onboot"
     class core
     user bluetooth
     group bluetooth system
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+service hciattach /vendor/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
@@ -821,7 +821,7 @@ service ril-daemon1 /vendor/bin/hw/rild_32 -c 2
     group radio cache inet misc audio log readproc wakelock diag net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service rild1-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+service rild1-wrapper /vendor/etc/init.qcom.ril.sh
     class late_start
     user root
     group root
@@ -859,41 +859,41 @@ service motosh /system/vendor/bin/motosh boot
     group compass misc input
     oneshot
 
-service mmi-boot-sh /init.mmi.boot.sh
+service mmi-boot-sh /vendor/etc/init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service mmi-laser-sh  /init.mmi.laser.sh
-    class core
-    user root
-    oneshot
-    disabled
-
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
-    class core
-    user root
-    oneshot
-
-service oem-hw-sh /init.oem.hw.sh
+service mmi-laser-sh  /vendor/etc/init.mmi.laser.sh
     class core
     user root
     oneshot
     disabled
 
-service touch-dead-sh /init.oem.hw.sh -f
+service mmi-touch-sh /vendor/etc/init.mmi.touch.sh
+    class core
+    user root
+    oneshot
+
+service oem-hw-sh /vendor/etc/init.oem.hw.sh
+    class core
+    user root
+    oneshot
+    disabled
+
+service touch-dead-sh /vendor/etc/init.oem.hw.sh -f
     class main
     user root
     oneshot
     disabled
 
-service touch-ready-sh /init.oem.hw.sh -r
+service touch-ready-sh /vendor/etc/init.oem.hw.sh -r
     class main
     user root
     oneshot
     disabled
 
-service oem-hw-config-sh /init.oem.hw.sh -p
+service oem-hw-config-sh /vendor/etc/init.oem.hw.sh -p
     class main
     user root
     oneshot

@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/vendor/bin/sh
 
 # We take this from cpuinfo because hex "letters" are lowercase there
 set -A cinfo `cat /proc/cpuinfo | /system/bin/grep Revision`
