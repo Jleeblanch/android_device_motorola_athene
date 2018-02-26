@@ -359,29 +359,25 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     hostapd \
+    libcurl \
     libwpa_client \
-    wpa_supplicant \
+    tcpdump \
+    wcnss_service \
     wificond \
     wifilogd \
+    wpa_supplicant \
     wpa_supplicant.conf
-
-PRODUCT_PACKAGES += \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
     WCNSS_wlan_dictionary.dat
 
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
-    libcurl \
-    tcpdump \
-    wcnss_service
-
 PRODUCT_COPY_FILES += \
-    kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/vendor/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
+    kernel/motorola/msm8952/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 # Input configuration
 PRODUCT_COPY_FILES += \
