@@ -614,10 +614,6 @@ on property:bluetooth.dun.status=stopped
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-on property:vold.decrypt=trigger_restart_framework
-    start config_bluetooth
-    start wcnss-service
-
 service cnd /system/vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
@@ -628,12 +624,6 @@ service dpmd /system/vendor/bin/dpmd
     class late_start
     socket dpmd stream 660 root system
     writepid /dev/cpuset/system-background/tasks
-
-service config_bt_addr /system/vendor/bin/btnvtool -O
-    class core
-    user bluetooth
-    group bluetooth radio
-    oneshot
 
 service irsc_util /system/vendor/bin/irsc_util "/system/vendor/etc/sec_config"
     class main
