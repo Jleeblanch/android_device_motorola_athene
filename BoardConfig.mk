@@ -82,11 +82,8 @@ BLUETOOTH_HCI_USE_MCT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
-# CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += \
-    $(LOCAL_PATH)/cmhw \
-    hardware/cyanogen/cmhw
+# Lineage Hardware
+BOARD_HARDWARE_CLASS := device/motorola/athene/lineagehw
 
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
