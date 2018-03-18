@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/motorola/athene
+DEVICE_PATH := device/motorola/athene
 
 BOARD_VENDOR := motorola-qcom
 
@@ -63,7 +63,7 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -76,7 +76,7 @@ TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-    $(LOCAL_PATH)/cmhw \
+    $(DEVICE_PATH)/cmhw \
     hardware/cyanogen/cmhw
 
 # Display
@@ -118,11 +118,11 @@ USE_DEVICE_SPECIFIC_LOC_API := true
 TARGET_NO_RPC := true
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN += \
-    $(LOCAL_PATH)/config.fs \
-    $(LOCAL_PATH)/mot_aids.fs
+    $(DEVICE_PATH)/config.fs \
+    $(DEVICE_PATH)/mot_aids.fs
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -138,7 +138,7 @@ ENABLE_SCHED_BOOST := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Properties
-TARGET_SYSTEM_PROP += device/motorola/athene/system.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
@@ -169,7 +169,7 @@ USE_SENSOR_MULTI_HAL := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -178,7 +178,7 @@ TARGET_USE_SDCLANG := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
