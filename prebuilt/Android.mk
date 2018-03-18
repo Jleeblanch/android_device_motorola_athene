@@ -1,0 +1,11 @@
+LOCAL_PATH := $(call my-dir)
+
+# Kernel Adiutor
+include $(CLEAR_VARS)
+LOCAL_MODULE := KernelAdiutor
+LOCAL_SRC_FILES := apps/$(LOCAL_MODULE).apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := PRESIGNED
+include $(BUILD_PREBUILT)

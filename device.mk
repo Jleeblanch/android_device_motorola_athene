@@ -124,6 +124,10 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# Extra Packages
+PRODUCT_PACKAGES += \
+    KernelAdiutor
+
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
