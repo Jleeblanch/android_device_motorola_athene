@@ -99,6 +99,7 @@ USE_DEVICE_SPECIFIC_LOC_API := true
 TARGET_NO_RPC := true
 
 # HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 TARGET_FS_CONFIG_GEN += \
     $(DEVICE_PATH)/config.fs \
     $(DEVICE_PATH)/mot_aids.fs
