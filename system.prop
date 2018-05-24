@@ -115,9 +115,7 @@ vendor.voice.record.conc.disabled=false
 vendor.voice.voip.conc.disabled=true
 
 # Bluetooth
-bluetooth.hfp.client=1
 qcom.bluetooth.soc=smd
-ro.bluetooth.hfp.ver=1.6
 ro.qualcomm.bt.hci_transport=smd
 
 # Camera
