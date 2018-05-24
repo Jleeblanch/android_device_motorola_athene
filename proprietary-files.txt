@@ -874,12 +874,16 @@ vendor/lib/libCommandSvc.so
 bin/charge_only_mode
 
 # Perf
-bin/msm_irqbalance
-framework/QPerformance.jar
-lib/libqti_performance.so
-vendor/bin/perfd
+vendor/bin/energy-awareness
+vendor/bin/msm_irqbalance
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
+vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
+vendor/etc/perf/perfboostsconfig.xml
+vendor/lib/libfeedbackhandler.so
+vendor/lib/libperfgluelayer.so
+vendor/lib/libqti-perfd.so
 vendor/lib/libqti-perfd-client.so
-vendor/lib/libqti_performance.so
+vendor/lib/vendor.qti.hardware.perf@1.0_vendor.so
 
 # Peripheral Manager
 bin/hal_proxy_daemon
