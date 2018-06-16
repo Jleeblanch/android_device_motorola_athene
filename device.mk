@@ -169,6 +169,7 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh
     init.qcom.rc \
     init.qcom.sh \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 # IMS
