@@ -32,10 +32,8 @@ import /vendor/etc/init/hw/init.mmi.rc
 #import init.carrier.rc
 
 on early-init
-    mkdir /firmware 0771 system system
     mkdir /system 0777 root root
     symlink /data/tombstones /tombstones
-    mkdir /dsp 0771 media media
 
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
