@@ -42,7 +42,7 @@ setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 write_headers
 
 # The standard device blobs
-write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt
+write_makefiles "$MY_DIR"/proprietary-files.txt
 
 # We are done!
 write_footers
