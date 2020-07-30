@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2016, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -34,7 +34,32 @@
 #include <ds_client.h>
 #include <LocApiBase.h>
 #include <loc_api_v02_client.h>
+#include <vector>
+#include <functional>
 
+#define LOC_SEND_SYNC_REQ(NAME, ID, REQ)  \
+    int rv = true; \
+    locClientStatusEnumType st; \
+    locClientReqUnionType reqUnion; \
+    qmiLoc##NAME##IndMsgT_v02 ind; \
+\
+    memset(&ind, 0, sizeof(ind)); \
+    reqUnion.p##NAME##Req = &REQ; \
+\
+    st = locSyncSendReq(QMI_LOC_##ID##_REQ_V02,          \
+                        reqUnion,                        \
+                        LOC_ENGINE_SYNC_REQUEST_TIMEOUT, \
+                        QMI_LOC_##ID##_IND_V02,          \
+                        &ind);                           \
+\
+    if (st != eLOC_CLIENT_SUCCESS || \
+        eQMI_LOC_SUCCESS_V02 != ind.status) { \
+        LOC_LOGE ("%s:%d]: Error : st = %d, ind.status = %d", \
+                  __func__, __LINE__,  st, ind.status); \
+        rv = false; \
+    }
+
+using Resender = std::function<void()>;
 using namespace loc_core;
 
 /* This class derives from the LocApiBase class.
@@ -64,36 +89,39 @@ private:
   bool mInSession;
   bool mEngineOn;
   bool mMeasurementsStarted;
+  std::vector<Resender> mResenders;
 
   /* Convert event mask from loc eng to loc_api_v02 format */
   static locClientEventMaskType convertMask(LOC_API_ADAPTER_EVENT_MASK_T mask);
 
-  /* Convert GPS LOCK mask from gps.conf definition */
-  static qmiLocLockEnumT_v02 convertGpsLockMask(LOC_GPS_LOCK_MASK lockMask);
+  /* Convert GPS LOCK mask */
+  static qmiLocLockEnumT_v02 convertGpsLockMask(GnssConfigGpsLock lock);
 
   /* Convert error from loc_api_v02 to loc eng format*/
   static enum loc_api_adapter_err convertErr(locClientStatusEnumType status);
 
   /* convert Ni Encoding type from QMI_LOC to loc eng format */
-  static GpsNiEncodingType convertNiEncoding(
+  static GnssNiEncodingType convertNiEncoding(
     qmiLocNiDataCodingSchemeEnumT_v02 loc_encoding);
 
   /*convert NI notify verify type from QMI LOC to loc eng format*/
-  static bool convertNiNotifyVerifyType (GpsNiNotification *notif,
+  static bool convertNiNotifyVerifyType (GnssNiNotification *notif,
       qmiLocNiNotifyVerifyEnumT_v02 notif_priv);
 
   /*convert GnssMeasurement type from QMI LOC to loc eng format*/
-  static void convertGnssMeasurements (GnssMeasurement& gnssMeasurement,
-      const qmiLocSVMeasurementStructT_v02& gnss_measurement_info);
+  static void convertGnssMeasurements (GnssMeasurementsData& measurementData,
+      const qmiLocEventGnssSvMeasInfoIndMsgT_v02& gnss_measurement_report_ptr,
+      int index);
 
-  /*convert GnssClock type from QMI LOC to loc eng format*/
-  void convertGnssClock (GnssClock& gnssClock,
+  /*convert LocGnssClock type from QMI LOC to loc eng format*/
+  int convertGnssClock (GnssMeasurementsClock& clock,
       const qmiLocEventGnssSvMeasInfoIndMsgT_v02& gnss_measurement_info);
 
   /* If Confidence value is less than 68%, then scale the accuracy value to 68%
      confidence.*/
   void scaleAccuracyTo68PercentConfidence(const uint8_t confidenceValue,
-                                          GpsLocation &gpsLocation);
+                                          LocGpsLocation &gpsLocation,
+                                          const bool isCircularUnc);
 
   /* convert position report to loc eng format and send the converted
      position to loc eng */
@@ -180,21 +208,20 @@ public:
     setPositionMode(const LocPosMode& mode);
 
   virtual enum loc_api_adapter_err
-    setTime(GpsUtcTime time, int64_t timeReference, int uncertainty);
+    setTime(LocGpsUtcTime time, int64_t timeReference, int uncertainty);
 
   virtual enum loc_api_adapter_err
     injectPosition(double latitude, double longitude, float accuracy);
 
-  virtual enum loc_api_adapter_err
-    deleteAidingData(GpsAidingData f);
+  virtual LocationError
+    deleteAidingData(const GnssAidingData& data);
 
-  virtual enum loc_api_adapter_err
-    informNiResponse(GpsUserResponseType userResponse,
-                     const void* passThroughData);
+  virtual LocationError
+    informNiResponse(GnssNiResponse userResponse, const void* passThroughData);
 
-  virtual enum loc_api_adapter_err
+  virtual LocationError
     setServer(const char* url, int len);
-  virtual enum loc_api_adapter_err
+  virtual LocationError
     setServer(unsigned int ip, int port, LocServerType type);
   virtual enum loc_api_adapter_err
     setXtraData(char* data, int length);
@@ -202,13 +229,13 @@ public:
     requestXtraServer();
   virtual enum loc_api_adapter_err
     atlOpenStatus(int handle, int is_succ, char* apn, AGpsBearerType bear,
-                   AGpsType agpsType);
+                   LocAGpsType agpsType);
   virtual enum loc_api_adapter_err atlCloseStatus(int handle, int is_succ);
-  virtual enum loc_api_adapter_err setSUPLVersion(uint32_t version);
+  virtual LocationError setSUPLVersion(GnssConfigSuplVersion version);
 
   virtual enum loc_api_adapter_err setNMEATypes (uint32_t typesMask);
 
-  virtual enum loc_api_adapter_err setLPPConfig(uint32_t profile);
+  virtual LocationError setLPPConfig(GnssConfigLppProfile profile);
 
   virtual enum loc_api_adapter_err
     setSensorControlConfig(int sensorUsage, int sensorProvider);
@@ -225,19 +252,25 @@ public:
                                int gyroSamplesPerBatch, int gyroBatchesPerSec,
                                int accelSamplesPerBatchHigh, int accelBatchesPerSecHigh,
                                int gyroSamplesPerBatchHigh, int gyroBatchesPerSecHigh, int algorithmConfig);
-  virtual enum loc_api_adapter_err setAGLONASSProtocol(unsigned long aGlonassProtocol);
-  virtual enum loc_api_adapter_err setLPPeProtocol(unsigned long lppeCP, unsigned long lppeUP);
+  virtual LocationError
+      setAGLONASSProtocol(GnssConfigAGlonassPositionProtocolMask aGlonassProtocol);
+  virtual LocationError setLPPeProtocolCp(GnssConfigLppeControlPlaneMask lppeCP);
+  virtual LocationError setLPPeProtocolUp(GnssConfigLppeUserPlaneMask lppeUP);
   virtual enum loc_api_adapter_err
-      getWwanZppFix(GpsLocation & zppLoc);
+      getWwanZppFix();
+  virtual void
+      handleWwanZppFixIndication(const qmiLocGetAvailWwanPositionIndMsgT_v02 &zpp_ind);
   virtual enum loc_api_adapter_err
-      getBestAvailableZppFix(GpsLocation & zppLoc);
+      getBestAvailableZppFix(LocGpsLocation & zppLoc);
   virtual enum loc_api_adapter_err
-      getBestAvailableZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask);
-  virtual int initDataServiceClient();
+      getBestAvailableZppFix(LocGpsLocation & zppLoc, GpsLocationExtended & location_extended,
+              LocPosTechMask & tech_mask);
+  virtual int initDataServiceClient(bool isDueToSsr);
   virtual int openAndStartDataCall();
   virtual void stopDataCall();
   virtual void closeDataCall();
-  virtual int setGpsLock(LOC_GPS_LOCK_MASK lock);
+  virtual void releaseDataServiceClient();
+  virtual LocationError setGpsLock(GnssConfigGpsLock lock);
 
   /*
     Returns
@@ -246,14 +279,25 @@ public:
   */
   virtual int getGpsLock(void);
   virtual int setSvMeasurementConstellation(const qmiLocGNSSConstellEnumT_v02 svConstellation);
-  virtual enum loc_api_adapter_err setXtraVersionCheck(enum xtra_version_check check);
-  virtual void installAGpsCert(const DerEncodedCertificate* pData,
+  virtual LocationError setXtraVersionCheck(uint32_t check);
+  virtual void installAGpsCert(const LocDerEncodedCertificate* pData,
                                size_t length,
                                uint32_t slotBitMask);
   /*
     Set Gnss Constellation Config
   */
   virtual bool gnssConstellationConfig();
+  virtual LocPosTechMask convertPosTechMask(qmiLocPosTechMaskT_v02 mask);
+  virtual LocNavSolutionMask convertNavSolutionMask(qmiLocNavSolutionMaskT_v02 mask);
+
+  locClientStatusEnumType locSyncSendReq(uint32_t req_id, locClientReqUnionType req_payload,
+          uint32_t timeout_msec, uint32_t ind_id, void* ind_payload_ptr);
+
+  inline locClientStatusEnumType locClientSendReq(uint32_t req_id,
+          locClientReqUnionType req_payload) {
+      return ::locClientSendReq(clientHandle, req_id, req_payload);
+  }
+
 };
 
 extern "C" LocApiBase* getLocApi(const MsgTask* msgTask,
