@@ -1,4 +1,4 @@
-/* Copyright (c) 2011,2014 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011, 2014, 2017 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -34,8 +34,6 @@
 #include <platform_lib_includes.h>
 #include <stdlib.h>
 #include <stdint.h>
-
-extern "C" {
 
 typedef struct list_element {
    struct list_element* next;
@@ -110,7 +108,6 @@ linked_list_err_type linked_list_destroy(void** list_data)
   ===========================================================================*/
 linked_list_err_type linked_list_add(void* list_data, void *data_obj, void (*dealloc)(void*))
 {
-   LOC_LOGV("%s: Adding to list data_obj = 0x%08X\n", __FUNCTION__, data_obj);
    if( list_data == NULL )
    {
       LOC_LOGE("%s: Invalid list parameter!\n", __FUNCTION__);
@@ -162,7 +159,6 @@ linked_list_err_type linked_list_add(void* list_data, void *data_obj, void (*dea
   ===========================================================================*/
 linked_list_err_type linked_list_remove(void* list_data, void **data_obj)
 {
-   LOC_LOGV("%s: Removing from list\n", __FUNCTION__);
    if( list_data == NULL )
    {
       LOC_LOGE("%s: Invalid list parameter!\n", __FUNCTION__);
@@ -269,7 +265,6 @@ linked_list_err_type linked_list_search(void* list_data, void **data_p,
                                         bool (*equal)(void* data_0, void* data),
                                         void* data_0, bool rm_if_found)
 {
-   LOC_LOGV("%s: Search the list\n", __FUNCTION__);
    if( list_data == NULL || NULL == equal )
    {
       LOC_LOGE("%s: Invalid list parameter! list_data %p equal %p\n",
@@ -327,4 +322,3 @@ linked_list_err_type linked_list_search(void* list_data, void **data_p,
    return eLINKED_LIST_SUCCESS;
 }
 
-}
