@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2015, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2013-2017 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -29,31 +29,33 @@
 #ifndef GPS_EXTENDED_H
 #define GPS_EXTENDED_H
 
-#include <gps_extended_c.h>
 /**
  * @file
  * @brief C++ declarations for GPS types
  */
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
+#include <gps_extended_c.h>
 #if defined(USE_GLIB) || defined(OFF_TARGET)
 #include <string.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+
+
 struct LocPosMode
 {
     LocPositionMode mode;
-    GpsPositionRecurrence recurrence;
+    LocGpsPositionRecurrence recurrence;
     uint32_t min_interval;
     uint32_t preferred_accuracy;
     uint32_t preferred_time;
     bool share_position;
     char credentials[14];
     char provider[8];
-    LocPosMode(LocPositionMode m, GpsPositionRecurrence recr,
+    LocPosMode(LocPositionMode m, LocGpsPositionRecurrence recr,
                uint32_t gap, uint32_t accu, uint32_t time,
                bool sp, const char* cred, const char* prov) :
         mode(m), recurrence(recr),
@@ -73,7 +75,7 @@ struct LocPosMode
 
     inline LocPosMode() :
         mode(LOC_POSITION_MODE_MS_BASED),
-        recurrence(GPS_POSITION_RECURRENCE_PERIODIC),
+        recurrence(LOC_GPS_POSITION_RECURRENCE_PERIODIC),
         min_interval(GPS_DEFAULT_FIX_INTERVAL_MS),
         preferred_accuracy(50), preferred_time(120000),
         share_position(true) {
