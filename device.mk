@@ -113,15 +113,14 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.mmi.boot.sh \
+    init.class_main.sh \
     init.mmi.laser.sh \
-    init.mmi.touch.sh \
     init.mmi.usb.rc \
     init.oem.hw.sh \
-    init.qcom.bt.sh \
-    init.qcom.power.rc \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh
     init.qcom.rc \
-    init.qcom.ril.sh \
+    init.qcom.sh \
     ueventd.qcom.rc
 
 # IPA Manager
