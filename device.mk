@@ -115,6 +115,8 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.class_main.sh \
     init.mmi.laser.sh \
+    init.mmi.overlay.rc \
+    init.mmi.rc \
     init.mmi.usb.rc \
     init.mmi.usb.sh \
     init.oem.hw.sh \
