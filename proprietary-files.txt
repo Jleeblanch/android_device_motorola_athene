@@ -640,6 +640,10 @@ vendor/lib/libxml.so
 # Crypto
 lib/libcryptfs_hw.so
 
+# Display Calib
+etc/pp_calib_data_mipi_mot_cmd_boe_1080p_546_v0.xml:vendor/etc/pp_calib_data_mipi_mot_cmd_boe_1080p_546_v0.xml
+etc/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml:vendor/etc/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml
+
 # DPM
 framework/com.qti.dpmframework.jar
 framework/dpmapi.jar

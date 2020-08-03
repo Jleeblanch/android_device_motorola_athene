@@ -107,10 +107,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/display/pp_calib_data_mipi_mot_cmd_boe_1080p_546_v0.xml:system/etc/pp_calib_data_mipi_mot_cmd_boe_1080p_546_v0.xml \
-    $(LOCAL_PATH)/display/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml:system/etc/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
