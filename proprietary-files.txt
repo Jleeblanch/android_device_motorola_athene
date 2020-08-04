@@ -16,9 +16,8 @@ vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 
 # AptX
-lib/libbt-aptX-ARM-4.2.2.so
-vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
-vendor/lib/libaptXScheduler.so
+lib/libaptX_encoder.so
+lib/libaptXHD_encoder.so
 
 # Audio - ACDB
 etc/acdbdata/Bluetooth_cal.acdb:vendor/etc/acdbdata/Bluetooth_cal.acdb
