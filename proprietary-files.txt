@@ -813,34 +813,15 @@ lib/libipanat.so
 vendor/lib/hw/keystore.msm8952.so
 
 # Media
-lib/libmm-omxcore.so
-lib/libmmjpeg_interface.so
-lib/libOmxSwVencHevc.so
-lib/libOmxVpp.so
-lib/libqomx_core.so
-lib/libslowmotionconverter.so
-lib/libvpplibrary.so
-vendor/lib/lib-dplmedia.so
-vendor/lib/libavenhancements.so
-vendor/lib/libExtendedExtractor.so
-vendor/lib/libFlacSwDec.so
-vendor/lib/libHevcSwEncoder.so
-vendor/lib/libjpegdhw.so
-vendor/lib/libjpegdmahw.so
-vendor/lib/libjpegehw.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmqjpegdma.so
-vendor/lib/libmmqjpeg_codec.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAlacDec.so
+vendor/lib/libOmxAlacDecSw.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxApeDec.so
+vendor/lib/libOmxApeDecSw.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc.so
-vendor/lib/libqomx_jpegenc_pipe.so
 
 # Moto
 bin/motobox
