@@ -744,8 +744,11 @@ lib/libqcomfm_jni.so
 vendor/lib/hw/gatekeeper.msm8952.so
 
 # Graphics
-lib/libGLESv3.so
-lib/libtinyxml.so
+lib/vendor.display.color@1.0.so
+lib/vendor.display.config@1.0.so
+lib/vendor.display.config@1.1.so
+lib/vendor.display.postproc@1.0.so
+lib/vendor.qti.hardware.qdutils_disp@1.0.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -772,13 +775,7 @@ vendor/lib/libmm-dspp-utils.so
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib/libmm-qdcm.so
 vendor/lib/libmm-qdcm-diag.so
-vendor/lib/libmmhttpstack.so
-vendor/lib/libmmosal.so
-vendor/lib/libmmparser.so
-vendor/lib/libmmparser_lite.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmrtpdecoder.so
-vendor/lib/libmmrtpencoder.so
+vendor/lib/libmmosal_proprietary.so
 vendor/lib/libmmsw_detail_enhancement.so
 vendor/lib/libmmsw_math.so
 vendor/lib/libmmsw_opencl.so
@@ -789,7 +786,9 @@ vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libscale.so
 vendor/lib/libsd_sdk_display.so
-vendor/lib/libuiblur.so
+vendor/lib/vendor.display.color@1.0_vendor.so
+vendor/lib/vendor.display.config@1.0_vendor.so
+vendor/lib/vendor.display.postproc@1.0_vendor.so
 
 # Graphics - Firmware
 etc/firmware/a225p5_pm4.fw
