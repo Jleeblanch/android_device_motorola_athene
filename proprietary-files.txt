@@ -37,24 +37,17 @@ vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 
 # Bluetooth
-bin/btnvtool
-bin/dun-server
-bin/ftmdaemon
-bin/ftmipcd
-bin/hci_qcomm_init
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/bin/wcnss_filter
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib/com.qualcomm.qti.bluetooth_audio@1.0_vendor.so
+vendor/lib/libbt-hidlclient.so
 vendor/lib/libbtnv.so
 
-# Bluetooth - Firmware
-etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/nvm_tlv_3.2.bin
-etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv
-etc/firmware/rampatch_tlv_3.2.tlv
+# Bluetooth (shared dependencies)
+vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib/com.qualcomm.qti.ant@1.0_vendor.so
 
 # Camera
 lib/libcamerabgproc-jni.so
@@ -685,8 +678,11 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # FM
-framework/qcom.fmradio.jar
-lib/libqcomfm_jni.so
+lib/fm_helium.so
+lib/libfm-hci.so
+vendor/bin/fm_qsoc_patches
+vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 
 # Gatekeeper
 vendor/lib/hw/gatekeeper.msm8952.so
