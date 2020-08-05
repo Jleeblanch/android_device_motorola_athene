@@ -594,37 +594,38 @@ etc/pp_calib_data_mipi_mot_cmd_boe_1080p_546_v0.xml:vendor/etc/pp_calib_data_mip
 etc/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml:vendor/etc/pp_calib_data_mipi_mot_cmd_lgd_1080p_546_v0.xml
 
 # DRM
-bin/qseecomd
-lib/libpkip.so
-lib/libprovlib.so
-lib/libtpa.so
-lib/libtpa_core.so
-vendor/bin/qseeproxydaemon
-vendor/bin/qseeproxysampledaemon
-vendor/bin/seemp_healthd
-vendor/lib/libChamomilePA.so
+vendor/bin/qseecomd
+vendor/lib/libpkip.so
+vendor/lib/libtpa.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/libFidoCrypto.so
-vendor/lib/libFidoCryptoJNI.so
-vendor/lib/libFidoCryptov1.so
+vendor/lib/libFidoCrypto_vendor.so
+vendor/lib/libFidoCryptov1_vendor.so
 vendor/lib/libFIDOKeyProvisioning.so
-vendor/lib/libFidoSuiJNI.so
 vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
-vendor/lib/libGPTEE.so
+vendor/lib/libGPTEE_vendor.so
 vendor/lib/libqisl.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
+vendor/lib/libsecureui_svcsock.so
+vendor/lib/libSecureUILib.so
 vendor/lib/libssd.so
 vendor/lib/libStDrvInt.so
 
+# DRM - QTEE
+vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
+vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
+vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so
+vendor/lib/libQTEEConnector_vendor.so
+vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so
+
 # DRM - Widevine
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/liboemcrypto.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libwvhidl.so
 
 # DTV
 lib/libdtvhal.so
@@ -948,17 +949,6 @@ vendor/lib/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/radio/qcril_database/upgrade/3_version_qcrildb.sql
 vendor/radio/qcril_database/upgrade/4_version_qcrildb.sql
 vendor/radio/qcril_database/qcril.db
-
-# Secure
-vendor/lib/libHealthAuthClient.so
-vendor/lib/libHealthAuthJNI.so
-vendor/lib/libSampleAuthJNI.so
-vendor/lib/libSampleAuthJNIv1.so
-vendor/lib/libSampleExtAuthJNI.so
-vendor/lib/libSecureExtAuthJNI.so
-vendor/lib/libSecureSampleAuthClient.so
-vendor/lib/libSecureUILib.so
-vendor/lib/libsecureui_svcsock.so
 
 # Sensorhub
 bin/motosh
