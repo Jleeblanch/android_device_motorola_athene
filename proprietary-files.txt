@@ -632,10 +632,9 @@ lib/libdtvhal.so
 lib/libdtvtuner.so
 
 # Fingerprint
-bin/fingerprintd
-lib/hw/fingerprint.msm8952.so
 lib/lib_fpc_tac_shared.so
 lib/libcom_fingerprints_service.so
+vendor/lib/hw/fingerprint.msm8952.so
 
 # Firmware
 etc/firmware/DE.o.msm8952:vendor/firmware/DE.o.msm8952
