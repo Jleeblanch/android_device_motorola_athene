@@ -849,7 +849,7 @@ vendor/lib/libassetsverifier.so
 vendor/lib/libCommandSvc.so
 
 # Offmode charging
-bin/charge_only_mode
+vendor/bin/charge_only_mode
 
 # Perf
 vendor/bin/energy-awareness
