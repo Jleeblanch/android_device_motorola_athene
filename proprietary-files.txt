@@ -947,11 +947,8 @@ vendor/bin/time_daemon
 -vendor/lib/libtime_genoff.so
 
 # Wi-Fi
-bin/cnss-daemon
-bin/cnss_diag
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-lib/libwifi-hal-qcom.so
-vendor/lib/libxtwifi_ulp_adaptor.so
+vendor/bin/cnss-daemon
+vendor/lib/libwifi-hal-qcom.so
 
 # Wifi Display
 vendor/lib/libwfdcommonutils.so
