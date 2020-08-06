@@ -820,34 +820,6 @@ vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 
-# Moto
-bin/motobox
-bin/tcmd
-bin/tcmdhelp
-etc/permissions/com.motorola.android.settings.shared.xml
-etc/permissions/com.motorola.camerabgproc_library.xml
-etc/permissions/com.motorola.frameworks.core.addon.xml
-etc/permissions/com.motorola.imager.access.xml
-etc/permissions/com.motorola.imager.athene.xml
-etc/permissions/com.motorola.motosignature.xml
-etc/permissions/com.motorola.slpc.xml
-framework/com.motorola.android.dropboxhelper.jar
-framework/com.motorola.android.settings.shared.jar
-framework/com.motorola.camerabgproc.jar
-framework/com.motorola.frameworks.core.addon.jar
-framework/com.motorola.imager.athene.jar
-framework/com.motorola.motosignature.jar
-framework/embmslibrary.jar
-framework/qmapbridge.jar
-framework/tcmclient.jar
-framework/tcmiface.jar
-lib/libminui.so
-lib/libmotocare.so
-lib/libpanelmode.so
-lib/libwbxmlparser.so
-vendor/lib/libassetsverifier.so
-vendor/lib/libCommandSvc.so
-
 # Offmode charging
 vendor/bin/charge_only_mode
 
@@ -869,7 +841,6 @@ vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 
 # Post processing
-etc/permissions/com.qti.snapdragon.sdk.display.xml
 -vendor/app/colorservice/colorservice.apk
 vendor/bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
