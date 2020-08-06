@@ -806,8 +806,9 @@ vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
 #bin/ipacm-diag
 lib/libipanat.so
 
-# Keystore
+# Keymaster
 vendor/lib/hw/keystore.msm8952.so
+vendor/lib/libkeymasterprovision.so
 
 # Media
 vendor/lib/libOmxAacDec.so
