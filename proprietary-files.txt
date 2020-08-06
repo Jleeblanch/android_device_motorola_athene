@@ -920,27 +920,21 @@ vendor/radio/qcril_database/upgrade/3_version_qcrildb.sql
 vendor/radio/qcril_database/upgrade/4_version_qcrildb.sql
 vendor/radio/qcril_database/qcril.db
 
-# Sensorhub
-bin/motosh
-etc/firmware/sensorhub-blacklist.txt
-etc/firmware/sensorhubfw.bin
-etc/permissions/com.motorola.hw.sensorhub.xml
-lib/hw/sensorhub.msm8952.so
-lib/libmodalityservice_jni.so
-lib/libsensorhub.so
-lib/libsensorhubservice_jni.so
-lib/libslpc.so
-vendor/lib/libmodalityservice_jni.so
-vendor/lib/libsensorhubservice_jni.so
-
 # Sensors
-bin/sensors.qcom
-lib/hw/sensors.msm8952.so
+etc/permissions/com.motorola.hw.sensorhub.xml:vendor/etc/permissions/com.motorola.hw.sensorhub.xml
 lib/libmot_sensorlistener.so
-vendor/lib/libsensor1.so
+vendor/bin/motosh
+vendor/etc/firmware/sensorhubfw.bin
+vendor/lib/hw/sensorhub.msm8952.so
+vendor/lib/libmodalityservice_jni.so
 vendor/lib/libsensor_reg.so
-vendor/lib/sensors.ssc.so
+vendor/lib/libsensor1.so
+vendor/lib/libsensorhub.so
+vendor/lib/libsensorhubservice_jni.so
+vendor/lib/libslpc.so
 vendor/lib/sensor_calibrate.so
+vendor/lib/sensors.ssc.so
+vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
 
 # Thermal
 vendor/bin/thermal-engine
