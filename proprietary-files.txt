@@ -942,10 +942,9 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time service
--app/TimeService/TimeService.apk
-bin/time_daemon
+-vendor/app/TimeService/TimeService.apk
+vendor/bin/time_daemon
 -vendor/lib/libtime_genoff.so
-vendor/lib/libTimeService.so
 
 # Wi-Fi
 bin/cnss-daemon
