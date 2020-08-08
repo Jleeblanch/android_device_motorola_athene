@@ -159,10 +159,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/lineagehw
-
 # Malloc
 MALLOC_SVELTE := true
 
