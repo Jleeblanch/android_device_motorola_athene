@@ -32,15 +32,8 @@ using android::hardware::light::V2_0::implementation::Light;
 
 const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
-const static std::string kRedLedPath = "/sys/class/leds/red/brightness";
-const static std::string kGreenLedPath = "/sys/class/leds/green/brightness";
-const static std::string kBlueLedPath = "/sys/class/leds/blue/brightness";
-const static std::string kRedBlinkPath = "/sys/class/leds/red/blink";
-const static std::string kGreenBlinkPath = "/sys/class/leds/green/blink";
-const static std::string kBlueBlinkPath = "/sys/class/leds/blue/blink";
-const static std::string kRedLedTimePath = "/sys/class/leds/red/led_time";
-const static std::string kGreenLedTimePath = "/sys/class/leds/green/led_time";
-const static std::string kBlueLedTimePath = "/sys/class/leds/blue/led_time";
+const static std::string kChargingLedPath = "/sys/class/leds/charging/brightness";
+const static std::string kBlinkLedPath = "/sys/class/leds/charging/blink";
 
 int main() {
     uint32_t lcdMaxBrightness = 255;
@@ -61,74 +54,23 @@ int main() {
         lcdMaxBacklight >> lcdMaxBrightness;
     }
 
-    std::ofstream redLed(kRedLedPath);
-    if (!redLed) {
-        LOG(ERROR) << "Failed to open " << kRedLedPath << ", error=" << errno
+    std::ofstream chargingLed(kChargingLedPath);
+    if (!chargingLed) {
+        LOG(ERROR) << "Failed to open " << kChargingLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
         return -errno;
     }
 
-    std::ofstream greenLed(kGreenLedPath);
-    if (!greenLed) {
-        LOG(ERROR) << "Failed to open " << kGreenLedPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream blueLed(kBlueLedPath);
-    if (!blueLed) {
-        LOG(ERROR) << "Failed to open " << kBlueLedPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream redBlink(kRedBlinkPath);
-    if (!redBlink) {
-        LOG(ERROR) << "Failed to open " << kRedBlinkPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream greenBlink(kGreenBlinkPath);
-    if (!greenBlink) {
-        LOG(ERROR) << "Failed to open " << kGreenBlinkPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream blueBlink(kBlueBlinkPath);
-    if (!blueBlink) {
-        LOG(ERROR) << "Failed to open " << kBlueBlinkPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream redLedTime(kRedLedTimePath);
-    if (!redLedTime) {
-        LOG(ERROR) << "Failed to open " << kRedLedTimePath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream greenLedTime(kGreenLedTimePath);
-    if (!greenLedTime) {
-        LOG(ERROR) << "Failed to open " << kGreenLedTimePath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
-    }
-
-    std::ofstream blueLedTime(kBlueLedTimePath);
-    if (!blueBlink) {
-        LOG(ERROR) << "Failed to open " << kBlueLedTimePath << ", error=" << errno
+    std::ofstream blinkLed(kBlinkLedPath);
+    if (!blinkLed) {
+        LOG(ERROR) << "Failed to open " << kBlinkLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
         return -errno;
     }
 
     android::sp<ILight> service = new Light(
             {std::move(lcdBacklight), lcdMaxBrightness},
-            std::move(redLed), std::move(greenLed), std::move(blueLed),
-            std::move(redBlink), std::move(greenBlink), std::move(blueBlink),
-            std::move(redLedTime), std::move(greenLedTime), std::move(blueLedTime));
+            std::move(chargingLed), std::move(blinkLed),
 
     configureRpcThreadpool(1, true);
 
