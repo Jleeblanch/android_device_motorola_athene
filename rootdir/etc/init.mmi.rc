@@ -167,14 +167,6 @@ on boot
     insmod /system/lib/modules/touchx.ko
 
 on fs
-    # Mount modem FSG partition
-    wait /dev/block/bootdevice/by-name/fsg
-    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev barrier=0 context=u:object_r:fsg_file:s0
-
-    #Mount customize partion
-    wait /dev/block/bootdevice/by-name/customize
-    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime defcontext=u:object_r:user_config_file:s0
-
     # use /persist as phony PDS partition
     symlink /persist /pds
 
