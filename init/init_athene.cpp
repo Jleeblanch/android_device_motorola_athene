@@ -38,7 +38,6 @@ using android::base::GetProperty
 using android::init::property_set
 
 static void num_sims(void);
-static void target_ram(void);
 
 void property_override(char const prop[], char const value[])
 {
@@ -83,7 +82,6 @@ void vendor_load_properties()
 
     /* Common for all models */
     property_override("ro.build.product", "athene");
-    target_ram();
     num_sims();
 
     if (device_boot == "athene_13mp") {
@@ -103,7 +101,7 @@ void vendor_load_properties()
     }
 
    if (sku == "XT1625" || sku == "XT1644") {
-       property_set("net.tethering.noprovisioning", "true");
+        property_set("net.tethering.noprovisioning", "true");
         property_set("persist.radio.is_wps_enabled", "true");
         property_set("ro.radio.imei.sv", "4");
         property_set("tether_dun_required", "0");
@@ -122,29 +120,6 @@ void vendor_load_properties()
         property_set("ro.radio.imei.sv", "2");
         property_set("persist.radio.is_wps_enabled", "true");
         property_set("persist.radio.pb.max.match", "10");
-    }
-}
-
-/* Target-Specific Dalvik Heap Configuration */
-static void target_ram(void) {
-    std::string ram;
-
-    ram = GetProperty("ro.boot.ram", "");
-
-    if (ram == "2GB") {
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "384m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "512k");
-        property_set("dalvik.vm.heapmaxfree", "8m");
-    } else {
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "384m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "512k");
-        property_set("dalvik.vm.heapmaxfree", "8m");
     }
 }
 
